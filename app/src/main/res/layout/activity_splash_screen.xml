@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="140dp"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="228dp"
         android:src="@drawable/ic_foot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="124dp"
         android:layout_marginStart="124dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:text="VET.FIND"
         android:textColor="#ffff"
         android:textSize="30dp"
