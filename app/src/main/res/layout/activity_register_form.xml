@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterFormActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="117dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/register_google"
+            android:layout_width="154dp"
+            android:layout_height="67dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="18dp"
+            android:layout_weight="1"
+            android:background="@drawable/register_button_google"
+            android:src="@drawable/ic_google" />
+
+        <ImageButton
+            android:id="@+id/register_facebook"
+            android:layout_width="154dp"
+            android:layout_height="68dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/register_google"
+            android:layout_marginEnd="18dp"
+            android:layout_weight="1"
+            android:background="@drawable/register_button_facebook"
+            android:src="@drawable/ic_facebook" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="137dp"
+            android:layout_height="1dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="18dp"
+            android:background="#afabab" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="OU"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            android:textColor="#afabab"/>
+
+        <View
+            android:layout_width="137dp"
+            android:layout_height="1dp"
+            android:layout_alignBottom="@+id/textView"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="11dp"
+            android:layout_marginStart="18dp"
+            android:background="#afabab" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="375dp">
+
+
+        <EditText
+            android:id="@+id/txtUNome"
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/txtPNome"
+            android:layout_marginEnd="15dp"
+            android:ems="10"
+            android:hint=" último nome"
+            android:inputType="textPersonName"
+            android:textSize="17dp" />
+
+        <EditText
+            android:id="@+id/txtPNome"
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="36dp"
+            android:ems="10"
+            android:hint=" primeiro nome"
+            android:inputType="textPersonName"
+            android:textSize="17dp" />
+
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="114dp"
+            android:ems="10"
+            android:hint=" nome@email.com"
+            android:inputType="textPersonName"
+            android:textSize="17dp" />
+
+        <EditText
+            android:id="@+id/txtSenha"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="154dp"
+            android:ems="10"
+            android:hint="sua senha"
+            android:inputType="textPassword"
+            android:textSize="17dp" />
+
+        <EditText
+            android:id="@+id/txtNasc"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/txtEmail"
+            android:layout_marginBottom="85dp"
+            android:ems="10"
+            android:hint="00/00/0000"
+            android:inputType="date" />
+
+        <Button
+            android:id="@+id/btnConc"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="17dp"
+            android:background="#b30909"
+            android:text="CONCLUIR"
+            android:textColor="#ffff"
+            android:textSize="16dp" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

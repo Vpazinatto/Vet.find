@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="btnEntrar" type="id" />
+    <item name="btnEntrarFacebook" type="id" />
+    <item name="btn_registrar" type="id" />
+</resources>
