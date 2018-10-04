@@ -67,18 +67,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="182dp"
-            android:ems="10"
+            android:layout_marginBottom="219dp"
+            android:hint="Telefone"
             android:inputType="phone" />
 
-        <EditText
-            android:id="@+id/txtNasc"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:ems="10"
-            android:hint="00/00/0000"
-            android:inputType="date" />
+
 
         <EditText
             android:id="@+id/txtEndereco"
@@ -88,7 +81,19 @@
             android:layout_alignStart="@+id/txtEmail"
             android:layout_marginBottom="103dp"
             android:ems="10"
+            android:hint="Endereço"
             android:inputType="textPostalAddress" />
+
+        <EditText
+            android:id="@+id/txtNasc"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="158dp"
+            android:ems="10"
+            android:hint="Nascimento: 00/00/0000"
+            android:inputType="date" />
 
         <Button
             android:id="@+id/btnConc"

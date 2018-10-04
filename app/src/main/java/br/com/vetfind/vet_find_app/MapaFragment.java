@@ -1,11 +1,12 @@
 package br.com.vetfind.vet_find_app;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -17,11 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 
-import br.com.vetfind.vet_find_app.DAO.AnimalDAO;
-import br.com.vetfind.vet_find_app.DAO.ClienteDAO;
 import br.com.vetfind.vet_find_app.DAO.VeterinarioDAO;
-import br.com.vetfind.vet_find_app.modelo.Animal;
-import br.com.vetfind.vet_find_app.modelo.Usuario;
 import br.com.vetfind.vet_find_app.modelo.Veterinario;
 
 public class MapaFragment extends SupportMapFragment implements OnMapReadyCallback {
@@ -31,15 +28,25 @@ public class MapaFragment extends SupportMapFragment implements OnMapReadyCallba
         super.onCreate(bundle);
 
         getMapAsync(this);
+
+
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng myPosition = getAdressCoordenates("Rua joanópolis 727, Cidade Jardim, Campinas");
-        if (myPosition != null) {
-            CameraUpdate update = CameraUpdateFactory.newLatLngZoom(myPosition, 17);
-            googleMap.moveCamera(update);
+
+        googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
         }
+        googleMap.setMyLocationEnabled(true);
 
         VeterinarioDAO veterinarioDAO= new VeterinarioDAO(getContext());
         for (Veterinario veterinario : veterinarioDAO.getVeterinarios()) {

@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    android:layout_height="match_parent"
+<FrameLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/frame_mapa"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#00ffffff">
 
-    <ReativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right">
+        <com.google.android.gms.maps.MapView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/map_view"
+            android:apiKey="AIzaSyCg5t0g2sIfQxuRSjL1LdKVMIzq1fr2dLw"/>
 
-        <ImageButton
-            android:id="@+id/btnReturnMyLocation"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fBtnFiltro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/ic_filtro"
+            app:backgroundTint="#F60404"/>
 
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:background="#cbede8e8"
-            android:src="@drawable/ic_target_point" />
-
-    </ReativeLayout>
 </FrameLayout>

@@ -49,15 +49,11 @@ public class Localizador implements GoogleApiClient.ConnectionCallbacks, Locatio
     }
 
     @Override
-    public void onLocationChanged(Location location) {
+    public void onLocationChanged(Location location)
+    {
         LatLng coordenada = new LatLng(location.getLatitude(), location.getLongitude());
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(coordenada);
         mapa.moveCamera(cameraUpdate);
-
-        MarkerOptions marker = new MarkerOptions();
-        marker.position(coordenada);
-        marker.title("Você");
-        marker.snippet(coordenada.toString());
-        mapa.addMarker(marker);
+        mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 17));
     }
 }

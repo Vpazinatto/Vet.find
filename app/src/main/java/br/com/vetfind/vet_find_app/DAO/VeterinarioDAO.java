@@ -22,7 +22,7 @@ public class VeterinarioDAO extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE Veterinarios (id INTEGER PRIMARY KEY, nome TEXT NOT NULL, nascimento TEXT NOT NULL, email TEXT NOT NULL, senha TEXT NOT NULL, caminhoFoto TEXT, endereco TEXT NOT NULL, telefone TEXT NOT NULL)";
+        String sql = "CREATE TABLE Veterinarios (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, nascimento TEXT NOT NULL, email TEXT NOT NULL, senha TEXT NOT NULL, caminhoFoto TEXT, endereco TEXT NOT NULL, telefone TEXT NOT NULL)";
         db.execSQL(sql);
     }
 
@@ -34,7 +34,7 @@ public class VeterinarioDAO extends SQLiteOpenHelper{
                 sql = "ALTER TABLE Veterinarios ADD COLUMN telefone TEXT";
                 db.execSQL(sql);
         }
-        //onCreate(db);
+        onCreate(db);
     }
 
     @NonNull
@@ -44,6 +44,7 @@ public class VeterinarioDAO extends SQLiteOpenHelper{
         dados.put("email", veterinario.getEmail());
         dados.put("nascimento", veterinario.getNascimento());
         dados.put("senha", veterinario.getSenha());
+        dados.put("telefone", veterinario.getTelefone());
         dados.put("caminhoFoto", veterinario.getCaminhoFoto());
         dados.put("endereco", veterinario.getEndereco());
         return dados;
