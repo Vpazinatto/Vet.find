@@ -26,7 +26,7 @@ public class TestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Utils util = new Utils();
 
-                Usuario user = util.getUsuario("http://192.168.0.10:3000/usuarios");
+                Usuario user = util.getUsuario("http://192.168.0.1:3000/usuarios");
                 txtTeste.setText(user.getNome());
 
             }

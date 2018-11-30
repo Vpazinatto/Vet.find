@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 
 public class ConnectionApi
 {
@@ -40,7 +41,9 @@ public class ConnectionApi
             conexao.disconnect();
         } catch (MalformedURLException e){
             e.printStackTrace();
-        }catch (IOException e){
+        } catch(UnknownHostException e){
+            e.printStackTrace();
+        } catch (IOException e){
             e.printStackTrace();
         }
 
