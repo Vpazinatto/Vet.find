@@ -94,7 +94,7 @@
         android:id="@+id/btn_addVet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Adicionar Veterinário" />
+        android:text="Testar API" />
 
     <LinearLayout
         android:layout_width="match_parent"

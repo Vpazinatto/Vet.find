@@ -8,6 +8,7 @@ public class Usuario implements Serializable {
     private String nome;
     private String nascimento;
     private String email;
+    private String CPF;
     private String caminhoFoto;
     private String senha;
 
@@ -62,5 +63,13 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return getId() + " - " + getNome();
+    }
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
 }

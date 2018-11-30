@@ -2,12 +2,14 @@ package br.com.vetfind.vet_find_app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.appcompat.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import java.util.List;
+
 import br.com.vetfind.vet_find_app.DAO.VeterinarioDAO;
 import br.com.vetfind.vet_find_app.modelo.Veterinario;
 
@@ -34,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_addVet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterVetFormActivity.class);
+                Intent intent = new Intent(LoginActivity.this, TestActivity.class);
                 startActivity(intent);
             }
         });

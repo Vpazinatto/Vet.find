@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "36465280316",
+    "firebase_url": "https://vetfind-forwar-1535412869961.firebaseio.com",
+    "project_id": "vetfind---forwar-1535412869961",
+    "storage_bucket": "vetfind---forwar-1535412869961.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36465280316:android:3f2970a4d5be8537",
+        "android_client_info": {
+          "package_name": "br.com.vetfind.vet_find_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36465280316-ish0cl9j9cv2fnbpvab54aojvst746sv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.vetfind.vet_find_app",
+            "certificate_hash": "be91dd42bfe316d8ce5ffcc1851de27c991b277b"
+          }
+        },
+        {
+          "client_id": "36465280316-je5ugf6p6tf62eqj36ppqmv0maergk73.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUFGWjZBzioJNj4kCpF_Mtkz0FCtOEhm0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36465280316-je5ugf6p6tf62eqj36ppqmv0maergk73.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
