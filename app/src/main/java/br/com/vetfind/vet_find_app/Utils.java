@@ -32,7 +32,7 @@ public class Utils
             Usuario usuario = new Usuario();
 
             JSONObject jsonObj = new JSONObject(json);
-            JSONArray array = jsonObj.getJSONArray("result");
+            JSONArray array = jsonObj.getJSONArray("recordset");
 
             JSONObject obj = array.getJSONObject(0);
 

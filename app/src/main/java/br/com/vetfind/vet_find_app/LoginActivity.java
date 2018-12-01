@@ -1,6 +1,9 @@
 package br.com.vetfind.vet_find_app;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,9 +14,12 @@ import android.widget.Toast;
 import java.util.List;
 
 import br.com.vetfind.vet_find_app.DAO.VeterinarioDAO;
+import br.com.vetfind.vet_find_app.modelo.Usuario;
 import br.com.vetfind.vet_find_app.modelo.Veterinario;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Activity {
+
+    private ProgressDialog load;
 
     private Button login;
     private Button loginF;
@@ -64,8 +70,8 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentVaiProMapa = new Intent(LoginActivity.this, MapaActivity.class);
-                startActivity(intentVaiProMapa);
+                LoginActivity.GetJson g = new LoginActivity.GetJson();
+                g.execute();
             }
         });
 
@@ -86,5 +92,31 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intentVaiProFormulario);
             }
         });
+    }
+
+    private class GetJson extends AsyncTask<Void, Void, Usuario>
+    {
+        @Override
+        protected void onPreExecute()
+        {
+            load = ProgressDialog.show(LoginActivity.this,
+                    "Por favor Aguarde ...", "Conectando com o servidor...");
+        }
+
+        @Override
+        protected Usuario doInBackground(Void... params)
+        {
+            Utils util = new Utils();
+
+            //se estiver rodando no emulador usar o IP 10.0.2.2 Se for no celular 127.0.0.1
+            return util.getUsuario("http:/10.0.2.2:3000/usuarios/usuario/1");
+        }
+
+        @Override
+        protected void onPostExecute(Usuario usuario)
+        {
+            startActivity(new Intent(LoginActivity.this, MapaActivity.class));
+            load.dismiss();
+        }
     }
 }

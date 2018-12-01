@@ -26,7 +26,7 @@ public class ConnectionApi
 
             conexao = (HttpURLConnection) apiEnd.openConnection();
             conexao.setRequestMethod("GET");
-            conexao.connect(); //DA PROBLEMA NESSA LINHA
+            conexao.connect();
 
             if(conexao.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST)
                 is = conexao.getInputStream();
