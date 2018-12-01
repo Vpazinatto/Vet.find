@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import br.com.vetfind.vet_find_app.modelo.Usuario;
+import br.com.vetfind.vet_find_app.ConnectionApi;
 
 public class Utils
 {
@@ -23,6 +24,16 @@ public class Utils
         retorno = parseJson(json);
 
         return retorno;
+    }
+
+    public Usuario validaUsuario(String end, Usuario usuario) {
+        String json;
+
+        if (ConnectionApi.validateUserFromApi(end, usuario)) {
+            return this.getUsuario("http://10.0.2.2:3000/usuarios/usuario/" + usuario.getId());
+        }
+
+        return usuario;
     }
 
     private Usuario parseJson(String json)

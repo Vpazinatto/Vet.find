@@ -10,9 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
-import java.util.Arrays;
 import java.util.List;
 
 import br.com.vetfind.vet_find_app.DAO.VeterinarioDAO;
@@ -45,8 +42,6 @@ public class LoginActivity extends Activity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = txtEmail.toString();
-                String senha = txtSenha.toString();
                 LoginActivity.GetJson g = new LoginActivity.GetJson();
                 g.execute();
             }
@@ -94,17 +89,21 @@ public class LoginActivity extends Activity {
         protected Usuario doInBackground(Void... params)
         {
             Utils util = new Utils();
+            Usuario user = new Usuario();
+            String email = txtEmail.getText().toString();
+            String senha = txtSenha.getText().toString();
+            user.setEmail(email);
+            user.setSenha(senha);
 
             //se estiver rodando no emulador usar o IP 10.0.2.2 Se for no celular 127.0.0.1
-            return util.getUsuario("http:/10.0.2.2:3000/usuarios/usuario/1");
+            return util.validaUsuario("http://10.0.2.2:3000/usuarios/login", user);
         }
 
         @Override
         protected void onPostExecute(Usuario usuario)
         {
+            Toast.makeText(LoginActivity.this, "Bem vindo " + usuario.getNome() + "!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(LoginActivity.this, MapaActivity.class));
-            txtEmail.setText(usuario.getEmail());
-            txtSenha.setText("Deu Certo");
             load.dismiss();
         }
     }
