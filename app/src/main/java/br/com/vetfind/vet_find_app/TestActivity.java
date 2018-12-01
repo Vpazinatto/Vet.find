@@ -28,8 +28,6 @@ public class TestActivity extends Activity {
         btn_testar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GetJson g = new GetJson();
-                g.execute();
             }
         });
     }

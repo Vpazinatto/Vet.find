@@ -1,10 +1,9 @@
 package br.com.vetfind.vet_find_app;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 
-public class FiltroActivity extends AppCompatActivity {
+public class FiltroActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

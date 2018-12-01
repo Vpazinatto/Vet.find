@@ -6,7 +6,6 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -28,8 +27,6 @@ public class MapaFragment extends SupportMapFragment implements OnMapReadyCallba
         super.onCreate(bundle);
 
         getMapAsync(this);
-
-
     }
 
     @Override

@@ -26,7 +26,7 @@ import java.util.List;
 import br.com.vetfind.vet_find_app.DAO.AnimalDAO;
 import br.com.vetfind.vet_find_app.modelo.Animal;
 
-public class FormularioActivity extends AppCompatActivity {
+public class FormularioActivity extends Activity {
 
     public static final int CODIGO_CAMERA = 567;
     private FormularioHelper helper;

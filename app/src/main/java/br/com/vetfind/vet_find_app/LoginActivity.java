@@ -5,12 +5,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import java.util.Arrays;
 import java.util.List;
 
 import br.com.vetfind.vet_find_app.DAO.VeterinarioDAO;
@@ -21,29 +23,40 @@ public class LoginActivity extends Activity {
 
     private ProgressDialog load;
 
-    private Button login;
-    private Button loginF;
-    private Button registrar;
+    private Button btnLogin;
+    private Button btnLoginF;
+    private Button btnRegistrar;
     private EditText txtEmail;
     private EditText txtSenha;
     private Button txtEsqSenha;
-    private Button btn_addVet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_login);
 
-        login = (Button) findViewById(R.id.btnEntrar);
+        txtEmail = findViewById(R.id.email);
+        txtSenha = findViewById(R.id.senha);
+        btnLogin = (Button) findViewById(R.id.btnEntrar);
+        btnLoginF = (Button) findViewById(R.id.btnEntrarFacebook);
         txtEsqSenha = (Button) findViewById(R.id.txtEsqueceuSenha);
+        btnRegistrar = (Button) findViewById(R.id.btn_registrar);
 
-        btn_addVet = findViewById(R.id.btn_addVet);
-        btn_addVet.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, TestActivity.class);
-                startActivity(intent);
+                String email = txtEmail.toString();
+                String senha = txtSenha.toString();
+                LoginActivity.GetJson g = new LoginActivity.GetJson();
+                g.execute();
+            }
+        });
+
+        btnLoginF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentVaiPraLista = new Intent(LoginActivity.this, ListaActivity.class);
+                startActivity(intentVaiPraLista);
             }
         });
 
@@ -59,33 +72,7 @@ public class LoginActivity extends Activity {
             }
         });
 
-        loginF = (Button) findViewById(R.id.btnEntrarFacebook);
-
-        txtEmail = findViewById(R.id.email);
-        txtSenha = findViewById(R.id.senha);
-
-        final String email = txtEmail.toString();
-        final String senha = txtSenha.toString();
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LoginActivity.GetJson g = new LoginActivity.GetJson();
-                g.execute();
-            }
-        });
-
-        loginF.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentVaiPraLista = new Intent(LoginActivity.this, ListaActivity.class);
-                startActivity(intentVaiPraLista);
-            }
-        });
-
-        registrar = (Button) findViewById(R.id.btn_registrar);
-
-        registrar.setOnClickListener(new View.OnClickListener() {
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentVaiProFormulario = new Intent(LoginActivity.this, RegisterFormActivity.class);
@@ -116,6 +103,8 @@ public class LoginActivity extends Activity {
         protected void onPostExecute(Usuario usuario)
         {
             startActivity(new Intent(LoginActivity.this, MapaActivity.class));
+            txtEmail.setText(usuario.getEmail());
+            txtSenha.setText("Deu Certo");
             load.dismiss();
         }
     }

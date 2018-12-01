@@ -1,21 +1,13 @@
 package br.com.vetfind.vet_find_app;
 
-import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,7 +17,7 @@ import br.com.vetfind.vet_find_app.DAO.AnimalDAO;
 import br.com.vetfind.vet_find_app.adapter.AnimaisAdapter;
 import br.com.vetfind.vet_find_app.modelo.Animal;
 
-public class ListaActivity extends AppCompatActivity {
+public class ListaActivity extends Activity {
 
     private ListView listaAnimais;
 
