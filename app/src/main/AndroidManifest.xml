@@ -44,7 +44,7 @@
         <activity
             android:name=".ListaActivity"
             android:label="Seus Animais"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".RegisterFormActivity"
             android:label="Registrar"

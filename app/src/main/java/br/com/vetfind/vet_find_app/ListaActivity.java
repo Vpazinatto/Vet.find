@@ -33,16 +33,6 @@ public class ListaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
-        Toolbar tBar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(tBar);
-
-        ImageButton btn = (ImageButton) findViewById(tBar.getId());
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ListaActivity.this, MenuDrawer.class));
-            }
-        });
 
         listaAnimais = (ListView) findViewById(R.id.lista_animais);
 

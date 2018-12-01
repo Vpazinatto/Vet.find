@@ -9,6 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.UnknownHostException;
 
+import javax.net.ssl.HttpsURLConnection;
+
 public class ConnectionApi
 {
     //Responsavel por carregar o Objeto JSON
@@ -19,19 +21,14 @@ public class ConnectionApi
         {
             System.out.print("URL: " + url);
             URL apiEnd = new URL(url);
-            int codigoResposta;
             HttpURLConnection conexao;
             InputStream is;
 
             conexao = (HttpURLConnection) apiEnd.openConnection();
             conexao.setRequestMethod("GET");
-            conexao.setReadTimeout(15000);
-            conexao.setConnectTimeout(15000);
             conexao.connect(); //DA PROBLEMA NESSA LINHA
 
-            codigoResposta = conexao.getResponseCode();
-
-            if(codigoResposta < HttpURLConnection.HTTP_BAD_REQUEST)
+            if(conexao.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST)
                 is = conexao.getInputStream();
             else
                 is = conexao.getErrorStream();
@@ -39,11 +36,14 @@ public class ConnectionApi
             retorno = converterInputStreamToString(is);
             is.close();
             conexao.disconnect();
+
         } catch (MalformedURLException e){
             e.printStackTrace();
         } catch(UnknownHostException e){
             e.printStackTrace();
         } catch (IOException e){
+            e.printStackTrace();
+        } catch (Exception e){
             e.printStackTrace();
         }
 

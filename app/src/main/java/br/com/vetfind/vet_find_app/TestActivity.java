@@ -25,10 +25,9 @@ public class TestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Utils util = new Utils();
-
-                Usuario user = util.getUsuario("http://192.168.0.1:3000/usuarios");
+                //se estiver rodando no emulador usar o IP 10.0.2.2 Se for no celular 127.0.0.1
+                Usuario user = util.getUsuario("http://127.0.0.1::3000/usuarios/usuario/1");
                 txtTeste.setText(user.getNome());
-
             }
         });
     }
