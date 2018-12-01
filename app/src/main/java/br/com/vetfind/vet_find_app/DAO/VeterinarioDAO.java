@@ -10,8 +10,6 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.vetfind.vet_find_app.modelo.Raca;
-import br.com.vetfind.vet_find_app.modelo.Usuario;
 import br.com.vetfind.vet_find_app.modelo.Veterinario;
 
 public class VeterinarioDAO extends SQLiteOpenHelper{

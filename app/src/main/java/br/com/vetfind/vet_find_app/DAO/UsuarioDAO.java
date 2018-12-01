@@ -14,9 +14,9 @@ import java.util.List;
 import br.com.vetfind.vet_find_app.modelo.Animal;
 import br.com.vetfind.vet_find_app.modelo.Usuario;
 
-public class ClienteDAO extends SQLiteOpenHelper{
+public class UsuarioDAO extends SQLiteOpenHelper{
 
-    public ClienteDAO(Context context) {
+    public UsuarioDAO(Context context) {
         super(context, "Login", null, 2);
     }
 

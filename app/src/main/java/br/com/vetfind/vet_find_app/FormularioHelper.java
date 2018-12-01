@@ -4,9 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 
-import br.com.vetfind.vet_find_app.DAO.RacaDAO;
 import br.com.vetfind.vet_find_app.modelo.Animal;
 
 public class FormularioHelper {
