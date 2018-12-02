@@ -1,5 +1,11 @@
 package br.com.vetfind.vet_find_app;
 
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -25,10 +31,10 @@ public class ConnectionApi
 {
     private static HttpURLConnection conexao;
     private static InputStream is;
+    private static BufferedReader reader;
 
     //Responsavel por carregar o Objeto JSON
-    public static String getUsuarioFromApi(String url)
-    {
+    public static String getUsuarioFromApi(String url) {
         String retorno = "";
         try
         {
@@ -61,45 +67,26 @@ public class ConnectionApi
         return retorno;
     }
 
-    public static Boolean validateUserFromApi(String url, Usuario usuario) {
+    //Responsavel por validar usuário
+    public static String validateUserFromApi(Usuario usuario) {
         try {
-            URL apiEnd = new URL(url);
-            String response = "";
-            BufferedReader reader=null;
-            String text = "";
-
-            conexao = (HttpURLConnection) apiEnd.openConnection();
+            conexao = (HttpURLConnection) new URL("http://10.0.2.2:3000/usuarios/login").openConnection();
             conexao.setRequestMethod("POST");
             conexao.setDoOutput(true);
+            conexao.setRequestProperty("Content-Type", "application/json; charset=utf-8");
 
-            HashMap<String, String> params = new HashMap<String,String>();
-            params.put("nome", usuario.getEmail());
-            params.put("senha",usuario.getSenha());
+            JSONObject json = new JSONObject();
+            json.accumulate("email", usuario.getEmail());
+            json.accumulate("senha", usuario.getSenha());
 
-            OutputStreamWriter wr = new OutputStreamWriter(conexao.getOutputStream());
-            wr.write(String.valueOf(params));
-            wr.flush();
-
-
+            setPostRequestContent(conexao, json);
 
             int responseCode=conexao.getResponseCode();
             if (responseCode == HttpsURLConnection.HTTP_OK) {
                 reader = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
-                StringBuilder sb = new StringBuilder();
-                String line = null;
-
-                // Read Server Response
-                while((line = reader.readLine()) != null)
-                {
-                    // Append server response in string
-                    sb.append(line + "\n");
-                }
-
-
-                text = sb.toString();
-                return true;
+                return reader.readLine();
             } else
-                return false;
+                return null;
 
         } catch (MalformedURLException e){
             e.printStackTrace();
@@ -111,28 +98,61 @@ public class ConnectionApi
             e.printStackTrace();
         }
 
-        return true;
+        return null;
     }
 
-    private static String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException{
-        StringBuilder result = new StringBuilder();
-        boolean first = true;
-        for(Map.Entry<String, String> entry : params.entrySet()){
-            if (first)
-                first = false;
-            else
-                result.append("&");
+    //Responsavel por inserir usuário
+    public static boolean insertUsuarioInApi(Usuario usuario) {
+        try {
+            conexao = (HttpURLConnection) new URL("http://10.0.2.2:3000/usuarios/usuario").openConnection();
+            conexao.setRequestMethod("POST");
+            conexao.setDoOutput(true);
+            conexao.setRequestProperty("Content-Type", "application/json; charset=utf-8");
 
-            result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-            result.append("=");
-            result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+            String data = setDate(usuario.getNascimento());
+
+            JSONObject json = new JSONObject();
+            json.put("nome", usuario.getNome());
+            json.put("nascimento", data);
+            json.put("email", usuario.getEmail());
+            json.put("CPF", usuario.getCPF());
+            json.put("senha", usuario.getSenha());
+            json.put("caminhoFoto", usuario.getCaminhoFoto());
+
+            setPostRequestContent(conexao, json);
+
+            int responseCode=conexao.getResponseCode();
+            if (responseCode == HttpsURLConnection.HTTP_CREATED) {
+                return true;
+            } else
+                return false;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
-        return result.toString();
+        return false;
     }
 
-    private static String converterInputStreamToString(InputStream is)
-    {
+    private static String setDate(String date) {
+        String[] separada = date.split("/");
+        date = separada[2] + "/" + separada[1] + "/" + separada[0];
+        return date;
+    }
+
+    private static void setPostRequestContent(HttpURLConnection conn, JSONObject jsonObject) throws IOException {
+        OutputStream os = conn.getOutputStream();
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+        writer.write(jsonObject.toString());
+        Log.i(ConnectionApi.class.toString(), jsonObject.toString());
+        writer.flush();
+        writer.close();
+        os.close();
+    }
+
+    private static String converterInputStreamToString(InputStream is) {
         StringBuffer buffer = new StringBuffer();
         try
         {

@@ -26,14 +26,20 @@ public class Utils
         return retorno;
     }
 
-    public Usuario validaUsuario(String end, Usuario usuario) {
-        String json;
+    public Usuario validaUsuario(Usuario usuario) {
 
-        if (ConnectionApi.validateUserFromApi(end, usuario)) {
-            return this.getUsuario("http://10.0.2.2:3000/usuarios/usuario/" + usuario.getId());
-        }
+        String user = ConnectionApi.validateUserFromApi(usuario);
+        if (user != null)
+            usuario = parseJson(user);
 
         return usuario;
+    }
+
+    public boolean insereUsuario(Usuario usuario) {
+        if (ConnectionApi.insertUsuarioInApi(usuario))
+            return true;
+
+        return false;
     }
 
     private Usuario parseJson(String json)

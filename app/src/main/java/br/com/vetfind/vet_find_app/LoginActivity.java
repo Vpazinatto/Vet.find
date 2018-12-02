@@ -82,7 +82,7 @@ public class LoginActivity extends Activity {
         protected void onPreExecute()
         {
             load = ProgressDialog.show(LoginActivity.this,
-                    "Por favor Aguarde ...", "Conectando com o servidor...");
+                    "Por favor Aguarde ...", "Logando no servidor...");
         }
 
         @Override
@@ -90,20 +90,22 @@ public class LoginActivity extends Activity {
         {
             Utils util = new Utils();
             Usuario user = new Usuario();
-            String email = txtEmail.getText().toString();
-            String senha = txtSenha.getText().toString();
-            user.setEmail(email);
-            user.setSenha(senha);
+            user.setEmail(txtEmail.getText().toString());
+            user.setSenha(txtSenha.getText().toString());
 
             //se estiver rodando no emulador usar o IP 10.0.2.2 Se for no celular 127.0.0.1
-            return util.validaUsuario("http://10.0.2.2:3000/usuarios/login", user);
+            return util.validaUsuario(user);
         }
 
         @Override
         protected void onPostExecute(Usuario usuario)
         {
-            Toast.makeText(LoginActivity.this, "Bem vindo " + usuario.getNome() + "!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(LoginActivity.this, MapaActivity.class));
+            if (usuario.getId() != null) {
+                Toast.makeText(LoginActivity.this, "Bem vindo " + usuario.getNome() + "!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this, MapaActivity.class));
+            } else
+                Toast.makeText(LoginActivity.this, "Login Inválido", Toast.LENGTH_SHORT).show();
+
             load.dismiss();
         }
     }
