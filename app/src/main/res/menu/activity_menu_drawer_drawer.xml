@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_mapa"
+            android:icon="@drawable/ic_mapa"
+            android:title="Mapa" />
+        <item
+            android:id="@+id/nav_animais"
+            android:icon="@drawable/ic_dog"
+            android:title="Seus Animais" />
+        <item
+            android:id="@+id/nav_atendimento"
+            android:icon="@drawable/ic_doctor"
+            android:title="Agendar Atendimento" />
+        <item
+            android:id="@+id/nav_emergencia"
+            android:icon="@drawable/ic_emergency"
+            android:title="Consulta de emergència" />
+        <item
+            android:id="@+id/nav_config"
+            android:icon="@drawable/ic_config"
+            android:title="Configurações" />
+    </group>
+
+</menu>

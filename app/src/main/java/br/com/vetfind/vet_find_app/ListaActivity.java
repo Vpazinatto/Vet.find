@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,14 +19,17 @@ import br.com.vetfind.vet_find_app.DAO.AnimalDAO;
 import br.com.vetfind.vet_find_app.adapter.AnimaisAdapter;
 import br.com.vetfind.vet_find_app.modelo.Animal;
 
-public class ListaActivity extends Activity {
+public class ListaActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
     private ListView listaAnimais;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         listaAnimais = (ListView) findViewById(R.id.lista_animais);
 

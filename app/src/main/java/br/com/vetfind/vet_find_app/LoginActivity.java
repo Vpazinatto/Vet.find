@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -44,6 +45,7 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 LoginActivity.GetJson g = new LoginActivity.GetJson();
                 g.execute();
+                //startActivity(new Intent(LoginActivity.this, MapaActivity.class));
             }
         });
 

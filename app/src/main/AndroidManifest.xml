@@ -57,13 +57,13 @@
             android:name=".FormularioActivity"
             android:label="Adicionar Animais"
             android:theme="@style/AppTheme" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity
             android:name=".MenuUsuarioActivity"
             android:label="@string/title_activity_menu_usuario"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".MapaActivity" />
-        <activity android:name=".TestActivity" />
+        <activity android:name=".DrawerFragment"/>
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/AppCompat.TelaCheia">
@@ -73,7 +73,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MenuDrawer"></activity>
     </application>
 
 </manifest>

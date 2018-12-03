@@ -6,16 +6,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#00ffffff">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu"/>
-
         <com.google.android.gms.maps.MapView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/map_view"
             android:apiKey="AIzaSyCg5t0g2sIfQxuRSjL1LdKVMIzq1fr2dLw"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:id="@+id/btnMenu"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_menu" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fBtnFiltro"
@@ -28,5 +33,4 @@
             android:layout_margin="@dimen/fab_margin"
             android:src="@drawable/ic_filtro"
             app:backgroundTint="#F60404"/>
-
 </FrameLayout>
