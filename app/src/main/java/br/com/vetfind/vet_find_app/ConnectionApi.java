@@ -70,7 +70,7 @@ public class ConnectionApi
     //Responsavel por validar usuário
     public static String validateUserFromApi(Usuario usuario) {
         try {
-            conexao = (HttpURLConnection) new URL("http://10.0.2.2:3000/usuarios/login").openConnection();
+            conexao = (HttpURLConnection) new URL("http://127.0.0.1:3000/usuarios/login").openConnection();
             conexao.setRequestMethod("POST");
             conexao.setDoOutput(true);
             conexao.setRequestProperty("Content-Type", "application/json; charset=utf-8");
@@ -104,7 +104,7 @@ public class ConnectionApi
     //Responsavel por inserir usuário
     public static boolean insertUsuarioInApi(Usuario usuario) {
         try {
-            conexao = (HttpURLConnection) new URL("http://10.0.2.2:3000/usuarios/usuario").openConnection();
+            conexao = (HttpURLConnection) new URL("http://127.0.0.1:3000/usuarios/usuario").openConnection();
             conexao.setRequestMethod("POST");
             conexao.setDoOutput(true);
             conexao.setRequestProperty("Content-Type", "application/json; charset=utf-8");
